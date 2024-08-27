@@ -1,0 +1,23 @@
+meta {
+  name: actulizar productos
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8081/api/products/5
+  body: json
+  auth: none
+}
+
+headers {
+  Content-type: application/json
+}
+
+body:json {
+  {
+    "name": "laptop",
+    "description": "basica",
+    "price": 90.5
+  }
+}

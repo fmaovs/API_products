@@ -1,0 +1,23 @@
+meta {
+  name: actulizar producto
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8081/api/products
+  body: json
+  auth: none
+}
+
+headers {
+  Content-type: application/json
+}
+
+body:json {
+  {
+    "name": "cargador tipo USB",
+    "description": "de carga rapida",
+    "price": 90.5
+  }
+}
