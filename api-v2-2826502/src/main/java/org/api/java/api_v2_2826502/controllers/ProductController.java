@@ -8,11 +8,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
@@ -22,12 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.naming.Binding;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @RestController
@@ -40,6 +30,7 @@ public class ProductController {
     //Endpoint
     //listar todos los productos
     @GetMapping("/products")
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     public ResponseEntity<List<Product>> getProducts(){
         return ResponseEntity.ok(servicio.findAll());
     }
@@ -62,6 +53,7 @@ public class ProductController {
     //endpoint
     //crar un producto
     @PostMapping("/products")
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     public ResponseEntity<?> crearproduct (@Valid @RequestBody Product product, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             //si existen errores de validacion en los datos del body
@@ -79,7 +71,8 @@ public class ProductController {
     }
 
     //endpoint para actualizar 
-    @PutMapping("/products/{id}")    
+    @PutMapping("/products/{id}")
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     public ResponseEntity<?> actualizarProducto (@RequestBody Product product, @PathVariable Long id){
         Optional<Product> prodAct = servicio.actualizarProduct(product, id);
         if(prodAct.isPresent()){

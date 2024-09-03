@@ -24,11 +24,11 @@ public class Product {
 
     @NotBlank(message = "nombre no debe tener espacios en blanco")
     @NotEmpty(message = "no puede estar basio")
-    
     private  String name;
 
     @Size(min=10, max = 20, message = "descripcion fuera de rango")
     private String description;
+
     @NonNull
     @Min(50)
     private  Double price;
